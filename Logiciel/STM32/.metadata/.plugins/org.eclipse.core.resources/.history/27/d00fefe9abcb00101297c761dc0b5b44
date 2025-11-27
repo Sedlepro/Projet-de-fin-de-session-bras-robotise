@@ -1,0 +1,54 @@
+/*
+ * PICCom.c
+ *
+ *  Created on: Nov 26, 2025
+ *      Author: Sedrick
+ */
+
+#include "PICCom.h"
+#include <string.h>
+
+static UART_HandleTypeDef *PIC_UART = NULL;
+static uint8_t rx_byte;
+static uint8_t rx_frame[PIC_FRAME_SIZE];
+static uint8_t rx_buffer_position = 0;
+static PIC_Status_t last_status;
+static bool new_status = false;
+
+void PICCom_Init(UART_HandleTypeDef *huart)
+{
+	PIC_UART = huart;
+
+	rx_buffer_position = 0;
+	new_status = false;
+	memset(rx_frame, 0, sizeof(rx_frame));
+	HAL_UART_Receive_IT(PIC_UART, &rx_byte, 1);
+}
+
+void PICCom_RxCallback(UART_HandleTypeDef *huart)
+{
+	if (huart != PIC_UART) { return; }
+
+	uint8_t byte_val = rx_byte;
+	rx_frame[rx_buffer_position++] = byte_val;
+
+	if (rx_buffer_position >= PIC_FRAME_SIZE) {
+		rx_buffer_position =0;
+	}
+
+	if (rx_frame[0] == PIC_TRAME_START && rx_frame[1] == PIC_TRAME_CONFIRM)
+	{
+		uint8_t checksum = 0;
+		for (uint8_t i = 0;  i < 7; i++) { checksum += rx_frame[i]; }
+
+		if (checksum == rx_frame[7])
+		{
+			lastStatus.x       = rxFrame[2];
+			lastStatus.y       = rxFrame[3];
+			lastStatus.pince   = rxFrame[4];
+			lastStatus.balance = rxFrame[5];
+
+			newStatus = true;
+		}
+	}
+}

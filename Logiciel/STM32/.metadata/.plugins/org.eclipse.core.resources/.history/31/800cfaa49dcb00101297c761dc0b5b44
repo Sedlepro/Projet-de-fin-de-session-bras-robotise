@@ -1,0 +1,11 @@
+/*
+ * PICCom.c
+ *
+ *  Created on: Nov 26, 2025
+ *      Author: Sedrick
+ */
+
+#include "PICCom.h"
+#include <string.h>
+
+static UART_HandleTypeDef *PIC_UART = NULL;
