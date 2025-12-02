@@ -7,6 +7,7 @@
 
 #include "PICCom.h"
 #include <string.h>
+#include "ecran.h"
 
 static UART_HandleTypeDef *PIC_UART = NULL;
 static uint8_t rx_byte;
@@ -30,11 +31,25 @@ void PICCom_RxCallback(UART_HandleTypeDef *huart)
 	if (huart != PIC_UART) { return; }
 
 	uint8_t byte_val = rx_byte;
+
+	if (rx_buffer_position == 0 && byte_val != PIC_TRAME_START) {
+		HAL_UART_Receive_IT(PIC_UART, &rx_byte, 1);
+		return;
+	}
+
+	if (rx_buffer_position == 1 && byte_val != PIC_TRAME_CONFIRM) {
+	    rx_buffer_position = 0;
+	    HAL_UART_Receive_IT(PIC_UART, &rx_byte, 1);
+	    return;
+	}
+
 	rx_frame[rx_buffer_position++] = byte_val;
 
 	if (rx_buffer_position >= PIC_FRAME_SIZE) {
-		rx_buffer_position =0;
+		rx_buffer_position = 0;
 	}
+
+
 
 	if (rx_frame[0] == PIC_TRAME_START && rx_frame[1] == PIC_TRAME_CONFIRM)
 	{
@@ -67,7 +82,7 @@ PIC_Status_t PICCom_GetStatus(void)
 
 HAL_StatusTypeDef PICCom_SendPositions(const Motor_Positions_t *pos)
 {
-	if (PIC_UART == NULL | pos ==NULL) { return HAL_ERROR; }
+	if ((PIC_UART == NULL) || (pos ==NULL)) { return HAL_ERROR; }
 
 	uint8_t frame_toSend[PIC_FRAME_SIZE];
 

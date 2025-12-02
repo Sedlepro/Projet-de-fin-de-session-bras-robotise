@@ -13,6 +13,7 @@ RM := rm -rf
 -include USB_DEVICE/App/subdir.mk
 -include Middlewares/ST/STM32_USB_Device_Library/Core/Src/subdir.mk
 -include Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/subdir.mk
+-include Drivers/TEP-\ Session\ 3\ kit\ 1e/Src/subdir.mk
 -include Drivers/STM32F1xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
@@ -56,6 +57,9 @@ default.size.stdout \
 OBJDUMP_LIST += \
 Projet_session_3_bras_robot.list \
 
+OBJCOPY_BIN += \
+Projet_session_3_bras_robot.bin \
+
 
 # All Target
 all: main-build
@@ -79,12 +83,17 @@ Projet_session_3_bras_robot.list: $(EXECUTABLES) makefile objects.list $(OPTIONA
 	@echo 'Finished building: $@'
 	@echo ' '
 
+Projet_session_3_bras_robot.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "Projet_session_3_bras_robot.bin"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) Projet_session_3_bras_robot.elf Projet_session_3_bras_robot.list Projet_session_3_bras_robot.map default.size.stdout
+	-$(RM) Projet_session_3_bras_robot.bin Projet_session_3_bras_robot.elf Projet_session_3_bras_robot.list Projet_session_3_bras_robot.map default.size.stdout
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

@@ -33,7 +33,7 @@ typedef struct {
 
 void PICCom_Init(UART_HandleTypeDef *huart);
 void PICCom_RxCallback(UART_HandleTypeDef *huart);
-bool PICCom_HasUpdated(void);
+bool PICCom_NewStatus(void);
 PIC_Status_t PICCom_GetStatus(void);
 HAL_StatusTypeDef PICCom_SendPositions(const Motor_Positions_t *pos);
 

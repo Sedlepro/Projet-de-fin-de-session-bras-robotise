@@ -1,0 +1,5 @@
+../Drivers/TEP- Session 3 kit 1e/Src/PICCom.c:19:6:PICCom_Init	16	static
+../Drivers/TEP- Session 3 kit 1e/Src/PICCom.c:29:6:PICCom_RxCallback	24	static
+../Drivers/TEP- Session 3 kit 1e/Src/PICCom.c:72:6:PICCom_NewStatus	4	static
+../Drivers/TEP- Session 3 kit 1e/Src/PICCom.c:77:14:PICCom_GetStatus	16	static
+../Drivers/TEP- Session 3 kit 1e/Src/PICCom.c:83:19:PICCom_SendPositions	32	static

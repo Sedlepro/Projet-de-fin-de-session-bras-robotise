@@ -1,0 +1,93 @@
+#include "Calculatrice_App.h"
+#include "Calculatrice.h"
+#include "Clavier_4X4.h"
+#include "ecran.h"
+
+static uint16_t lire_nombre(void)
+{
+    uint16_t valeur = 0;
+
+    LCD_command(0x01);
+    HAL_Delay(3);
+    LCD_String("Entrez nb:");
+
+    while (1)
+    {
+        uint8_t donnee = valeur_clavier();
+        if (donnee == 0) continue;
+
+        if (donnee >= '0' && donnee <= '9')
+        {
+            valeur = valeur * 10 + (donnee - '0');
+            LCD_Char(donnee);
+        }
+        else if (donnee == '*')
+        {
+            valeur = 0;
+            LCD_command(0x01);
+            HAL_Delay(3);
+            LCD_String("Entrez nb:");
+        }
+        else if (donnee == '#')
+        {
+            return valeur;
+        }
+    }
+}
+
+static char lire_operateur(void)
+{
+    LCD_command(0x01);
+    HAL_Delay(3);
+    LCD_String("Operateur:");
+
+    while (1)
+    {
+        uint8_t op = valeur_clavier();
+        if (op == 0) continue;
+
+        if (op == 'A') return '+';
+        if (op == 'B') return '-';
+        if (op== 'C') return '*';
+    }
+}
+
+void Calculatrice_App(void)
+{
+    Operandes op;
+
+    LCD_command(0x01);
+    HAL_Delay(3);
+    LCD_String("CALCULATRICE");
+
+    HAL_Delay(5000);
+
+    while (1)
+    {
+        LCD_command(0x01);
+        HAL_Delay(3);
+        LCD_String("A=");
+        op.a = lire_nombre();
+
+        char operateur = lire_operateur();
+
+        LCD_command(0x01);
+        HAL_Delay(3);
+        LCD_String("B=");
+        op.b = lire_nombre();
+
+        switch (operateur)
+        {
+            case '+': add(&op); break;
+            case '-': sub(&op); break;
+            case '*': mul(&op); break;
+        }
+
+        LCD_command(0x01);
+        HAL_Delay(3);
+        LCD_String("Resultat=");
+        LCD_PInt(op.resultat);
+
+        HAL_Delay(2000);
+    }
+}
