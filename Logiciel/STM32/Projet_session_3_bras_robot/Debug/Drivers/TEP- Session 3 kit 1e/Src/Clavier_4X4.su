@@ -1,5 +1,0 @@
-../Drivers/TEP- Session 3 kit 1e/Src/Clavier_4X4.c:16:6:Clavier_Sel_ligne	16	static
-../Drivers/TEP- Session 3 kit 1e/Src/Clavier_4X4.c:26:9:Clavier_lire_colonnes	16	static
-../Drivers/TEP- Session 3 kit 1e/Src/Clavier_4X4.c:50:6:Clavier_donnee_brut	16	static
-../Drivers/TEP- Session 3 kit 1e/Src/Clavier_4X4.c:64:6:Clavier_Debounce	16	static
-../Drivers/TEP- Session 3 kit 1e/Src/Clavier_4X4.c:89:9:valeur_clavier	40	static
