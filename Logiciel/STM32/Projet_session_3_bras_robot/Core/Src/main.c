@@ -27,6 +27,10 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include "ecran.h"
+#include "Clavier_4x4.h"
+#include "Display.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -96,12 +100,54 @@ int main(void)
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
 
+
+  LCD_Init();
+
+
+  uint8_t msg[6];
+
+  uint16_t Moteur1 = 78;
+  uint16_t Moteur2 = 250;
+  uint16_t Moteur3 = 174;
+  uint16_t Moteur4 = 0;
+  uint16_t Moteur5 = 0;
+
+  uint8_t  TableauX = 0;
+  uint8_t  TableauY = 0;
+  uint8_t  Pince = 0;
+  uint8_t  Balance = 0;
+  uint8_t  Bloc = 3;             // bloc state 0–3
+  uint8_t  Increment = 5;
+  uint8_t  Sequence = 7;    // 0–10
+  uint8_t  Step = 10;
+  uint8_t  État_Communication = 0;
+
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  uint32_t voltage = ADC_ReadVoltage();
+	  Balance = DisplayVoltage(voltage);
+
+	  //msg[0] = ScanKeypad();
+	  //msg[1] = '\0';
+
+
+	  LCD_UpdateDisplay(
+			  Moteur1,  Moteur2,  Moteur3,  Moteur4,  Moteur5,
+			  TableauX,   TableauY,   Pince,   Balance,
+			  Bloc, Increment,  Sequence, Step,  État_Communication);
+
+	  HAL_Delay(300);
+
+	  //LCD_String(msg);
+	  //HAL_Delay(250);
+	  //LCD_Clear();
+
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

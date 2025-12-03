@@ -7,6 +7,8 @@
 #include "Clavier_4X4.h"
 #include "main.h"
 
+#include "i2c.h"      // For PCF8574 functions
+
 uint8_t etat_brut[4][4] = {0};
 uint8_t etat_stables[4][4] = {0};
 uint8_t etat_compteur[4][4] = {0};
@@ -119,3 +121,48 @@ uint8_t valeur_clavier(void)
 	}
 	return 0x00;
 }
+
+uint8_t ScanKeypad(void)
+{
+
+	uint8_t row_pattern[4] = {
+		  0b11101111,   // Row 0 LOW
+		  0b11011111,   // Row 1 LOW
+		  0b10111111,   // Row 2 LOW
+		  0b01111111    // Row 3 LOW
+	  };
+
+	  char keymap[4][4] = {
+		  {'1','2','3','A'},
+		  {'4','5','6','B'},
+		  {'7','8','9','C'},
+		  {'*','0','#','D'}
+	  };
+
+	  // === Scan all rows ===
+	  for (uint8_t r = 0; r < 4; r++)
+	  {
+		  // Drive one row LOW, other rows HIGH
+		  PCF8574_Write(row_pattern[r]);
+		  HAL_Delay(2);
+
+		  // Read back columns
+		  uint8_t value = PCF8574_Read();
+
+		  // Lower 4 bits = columns (active LOW)
+		  uint8_t cols = value & 0x0F;
+
+		  // Check each column
+		  for (uint8_t c = 0; c < 4; c++)
+		  {
+			  if ((cols & (1 << c)) == 0)   // bit low = key pressed
+			  {
+				  return keymap[r][3 - c];
+			  }
+		  }
+	  }
+
+    return 0; // no key pressed
+}
+
+

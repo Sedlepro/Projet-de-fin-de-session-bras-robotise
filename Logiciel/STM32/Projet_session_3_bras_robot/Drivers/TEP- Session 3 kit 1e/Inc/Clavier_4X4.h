@@ -13,5 +13,6 @@
 #include "stm32f1xx_hal_gpio.h"
 
 uint8_t valeur_clavier(void);
+uint8_t ScanKeypad(void);
 
 #endif /* TEP__SESSION_3_KIT_1E_INC_CLAVIER_4X4_H_ */

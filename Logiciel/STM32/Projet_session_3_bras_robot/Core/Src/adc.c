@@ -22,6 +22,47 @@
 
 /* USER CODE BEGIN 0 */
 
+uint16_t ADC_Read(void)
+{
+    uint16_t adcValue = 0;
+
+    // Start ADC conversion
+    HAL_ADC_Start(&hadc1);
+
+    // Wait for conversion to finish
+    if(HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY) == HAL_OK)
+    {
+        // Get the ADC value
+        adcValue = HAL_ADC_GetValue(&hadc1);
+    }
+
+    // Stop ADC (optional, since continuous mode is disabled)
+    HAL_ADC_Stop(&hadc1);
+
+    return adcValue;
+}
+
+
+uint32_t ADC_ReadVoltage(void)
+{
+	uint16_t ADC_VREF_MV  = 3300;   // 3.3V in millivolts,  U pour unsigned
+	uint16_t ADC_MAX_VALUE = 4095;  // 12-bit ADC max, U pour unsigned
+
+	uint32_t adc = ADC_Read();   // 0–4095
+    uint32_t mv  = adc * ADC_VREF_MV / ADC_MAX_VALUE;
+
+    return mv;         // 0–3300 mV
+}
+
+uint8_t DisplayVoltage(uint32_t voltage)
+{
+    // Scale 0–3300 mV  0–255
+    uint32_t temp = voltage * 255;
+    uint8_t result = temp / 3300;
+
+    return result;
+}
+
 /* USER CODE END 0 */
 
 ADC_HandleTypeDef hadc1;

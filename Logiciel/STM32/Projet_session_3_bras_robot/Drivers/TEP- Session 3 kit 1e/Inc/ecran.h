@@ -11,4 +11,5 @@ void LCD_Init(void);
 void LCD_Char(uint8_t);
 void LCD_command(uint8_t data);
 void LCD_String(uint8_t message[]);
+void LCD_Clear(void);
 #endif /*_ECRAN_H*/
