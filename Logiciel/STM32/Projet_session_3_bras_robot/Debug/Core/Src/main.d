@@ -18,16 +18,23 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h \
+ ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h \
+ ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
+ ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h \
- ../Core/Inc/usart.h ../Core/Inc/main.h ../USB_DEVICE/App/usb_device.h \
+ ../Core/Inc/adc.h ../Core/Inc/main.h ../Core/Inc/i2c.h \
+ ../Core/Inc/usart.h ../USB_DEVICE/App/usb_device.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
- ../USB_DEVICE/Target/usbd_conf.h ../Core/Inc/gpio.h
+ ../USB_DEVICE/Target/usbd_conf.h ../Core/Inc/gpio.h \
+ U:/2eme\ Année/PROJET\ FINAL\ ROBOT/Projet-de-fin-de-session-bras-robotise/Logiciel/STM32/Projet_session_3_bras_robot/Drivers/TEP-\ Session\ 3\ kit\ 1e/Inc/ecran.h \
+ U:/2eme\ Année/PROJET\ FINAL\ ROBOT/Projet-de-fin-de-session-bras-robotise/Logiciel/STM32/Projet_session_3_bras_robot/Drivers/TEP-\ Session\ 3\ kit\ 1e/Inc/Clavier_4x4.h \
+ U:/2eme\ Année/PROJET\ FINAL\ ROBOT/Projet-de-fin-de-session-bras-robotise/Logiciel/STM32/Projet_session_3_bras_robot/Drivers/TEP-\ Session\ 3\ kit\ 1e/Inc/Display.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 ../Core/Inc/stm32f1xx_hal_conf.h:
@@ -48,16 +55,24 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc_ex.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h:
-../Core/Inc/usart.h:
+../Core/Inc/adc.h:
 ../Core/Inc/main.h:
+../Core/Inc/i2c.h:
+../Core/Inc/usart.h:
 ../USB_DEVICE/App/usb_device.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
 ../USB_DEVICE/Target/usbd_conf.h:
 ../Core/Inc/gpio.h:
+U:/2eme\ Année/PROJET\ FINAL\ ROBOT/Projet-de-fin-de-session-bras-robotise/Logiciel/STM32/Projet_session_3_bras_robot/Drivers/TEP-\ Session\ 3\ kit\ 1e/Inc/ecran.h:
+U:/2eme\ Année/PROJET\ FINAL\ ROBOT/Projet-de-fin-de-session-bras-robotise/Logiciel/STM32/Projet_session_3_bras_robot/Drivers/TEP-\ Session\ 3\ kit\ 1e/Inc/Clavier_4x4.h:
+U:/2eme\ Année/PROJET\ FINAL\ ROBOT/Projet-de-fin-de-session-bras-robotise/Logiciel/STM32/Projet_session_3_bras_robot/Drivers/TEP-\ Session\ 3\ kit\ 1e/Inc/Display.h:

@@ -1,0 +1,8 @@
+../Drivers/TEP- Session 3 kit 1e/Src/ecran.c:9:6:LCD_Init	1
+../Drivers/TEP- Session 3 kit 1e/Src/ecran.c:36:6:LCD_Mode	1
+../Drivers/TEP- Session 3 kit 1e/Src/ecran.c:47:6:LCD_write4bits	1
+../Drivers/TEP- Session 3 kit 1e/Src/ecran.c:60:6:LCD_command	1
+../Drivers/TEP- Session 3 kit 1e/Src/ecran.c:69:6:LCD_Clear	1
+../Drivers/TEP- Session 3 kit 1e/Src/ecran.c:79:6:LCD_Char	1
+../Drivers/TEP- Session 3 kit 1e/Src/ecran.c:88:6:LCD_String	2
+../Drivers/TEP- Session 3 kit 1e/Src/ecran.c:97:6:LCD_CustomChar	2

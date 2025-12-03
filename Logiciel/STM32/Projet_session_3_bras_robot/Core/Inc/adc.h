@@ -42,6 +42,10 @@ void MX_ADC1_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 
+uint16_t ADC_Read(void);
+uint32_t ADC_ReadVoltage(void);
+uint8_t DisplayVoltage(uint32_t voltage);
+
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

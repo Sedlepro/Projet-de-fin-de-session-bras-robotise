@@ -1,0 +1,5 @@
+../Drivers/TEP- Session 3 kit 1e/Src/Display.c:4:6:LCD_PrintDec_1Dig	2
+../Drivers/TEP- Session 3 kit 1e/Src/Display.c:17:6:LCD_PrintDec	2
+../Drivers/TEP- Session 3 kit 1e/Src/Display.c:32:6:LCD_PrintHex	3
+../Drivers/TEP- Session 3 kit 1e/Src/Display.c:49:6:LCD_PrintBloc	5
+../Drivers/TEP- Session 3 kit 1e/Src/Display.c:63:6:LCD_UpdateDisplay	2

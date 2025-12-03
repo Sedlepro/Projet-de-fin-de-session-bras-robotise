@@ -66,6 +66,16 @@ void LCD_command(uint8_t data)
 	return;
 }
 
+void LCD_Clear(void)
+{
+	LCD_Mode(0, 0);
+	LCD_write4bits(0x01 >> 4);
+	LCD_write4bits(0x01);
+	HAL_Delay(3);
+
+	return;
+}
+
 void LCD_Char(uint8_t data)
 {
 	LCD_Mode(1, 0);

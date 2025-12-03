@@ -42,6 +42,9 @@ void MX_I2C1_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 
+void PCF8574_Write(uint8_t data);
+uint8_t PCF8574_Read(void);
+
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

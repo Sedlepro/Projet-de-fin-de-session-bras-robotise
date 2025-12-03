@@ -1,0 +1,5 @@
+../Core/Src/i2c.c:30:6:MX_I2C1_Init	8	static
+../Core/Src/i2c.c:59:6:HAL_I2C_MspInit	40	static
+../Core/Src/i2c.c:87:6:HAL_I2C_MspDeInit	16	static
+../Core/Src/i2c.c:114:6:PCF8574_Write	32	static
+../Core/Src/i2c.c:120:9:PCF8574_Read	24	static

@@ -111,4 +111,20 @@ void HAL_I2C_MspDeInit(I2C_HandleTypeDef* i2cHandle)
 
 /* USER CODE BEGIN 1 */
 
+void PCF8574_Write(uint8_t data)
+{
+    uint8_t addr = 0x20 << 1; // PCF8574 default address (A0=A1=A2=0)
+    HAL_I2C_Master_Transmit(&hi2c1, addr, &data, 1, 100);
+}
+
+uint8_t PCF8574_Read(void)
+{
+    uint8_t addr = 0x20 << 1;
+    uint8_t data;
+
+    HAL_I2C_Master_Receive(&hi2c1, addr, &data, 1, 100);
+    return data;
+}
+
+
 /* USER CODE END 1 */
