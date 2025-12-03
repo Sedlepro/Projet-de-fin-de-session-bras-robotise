@@ -111,11 +111,11 @@ int main(void)
 		  PIC_Status_t s = PICCom_GetStatus();
 
 		  Motor_Positions_t m;
-		  m.motor0 = s.x;
-		  m.motor1 = s.y;
-		  m.motor2 = s.pince;
-		  m.motor3 = 128;
-		  m.motor4 = 0;
+		  m.motor0 = 100;
+		  m.motor1 = 130;
+		  m.motor2 = 100;
+		  m.motor3 = 50;
+		  m.motor4 = 140;
 		  PICCom_SendPositions(&m);
   	  }
     /* USER CODE END WHILE */
